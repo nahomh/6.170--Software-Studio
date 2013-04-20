@@ -1,1 +1,11 @@
 Agenda April 17, 2013:
+
+1). Discuss the overall feasibility of our product
+    a). Targeting the problem our product is addressing
+    b). Explaining the general idea of our product
+2). Identify risks and concerns of our implementation
+    a). Target features that may be adjusted based on implemenation risks
+    b). Address future concerns such as user testing and adoption
+3). Discuss team contract and our agreement of work
+    a). Establish goals for the project
+    b). Asert our team's ability to cohesively exist and complement the decided-upon work
