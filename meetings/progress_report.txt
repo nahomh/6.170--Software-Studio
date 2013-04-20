@@ -1,0 +1,12 @@
+Progress Report and Overall Plan:
+
+Design:
+- Schema Implementation
+- Object Model
+- User Model design
+- Implementation design
+
+
+Development: 
+
+Testing:

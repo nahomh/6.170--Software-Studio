@@ -1,0 +1,22 @@
+Agenda April 17, 2013:
+
+1). Discuss the overall feasibility of our product
+    a). Targeting the problem our product is addressing
+    b). Explaining the general idea of our product
+2). Identify risks and concerns of our implementation
+    a). Target features that may be adjusted based on implemenation risks
+    b). Address future concerns such as user testing and adoption
+3). Discuss team contract and our agreement of work
+    a). Establish goals for the project
+    b). Asert our team's ability to cohesively exist and complement the decided-upon work
+
+
+Meeting Minutes April 17, 2013
+
+- Discussed our general project and the targeted problem we are trying to solve: 
+  a solution to finding first-come/first-serve study locations
+- Explained the use of mobile technology to aid in our service:
+  particularly the use of NFC and QR codes for implementation
+- Addressed the concern of user testing and the difficulty to get users to actually participaate in our work
+- Discussed what a team contract our be and how our team plans to accomplish our project goals
+- Discussed our team's rails experience, and our ability to implement our proposed project. 
