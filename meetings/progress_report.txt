@@ -5,6 +5,7 @@ Design:
 - Object Model
 - User Model design
 - Implementation design
+- User interface
 
 
 Development: 

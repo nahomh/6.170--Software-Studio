@@ -2,8 +2,12 @@ Agenda April 23, 2013:
 
 1). Discuss/ critique the object model/ schema of the design
 	a). Should we focus on the ability to expand in the future or current functionality
+	b). Join table or rails convention to manage the people in a room
 2). Discuss the best approach to submiting requests through the mobile application
 	a). The importance of signing into to  our application - on mobile as well as online
+3). Best method to send requests to refresh the pertinent information (examples ajax, refreshes)
+	a). Is possible to submit ajax to user upon database change - similar to the way Facebook indicates new feeds
+
 
    
 
