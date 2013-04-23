@@ -13,3 +13,8 @@ Agenda April 23, 2013:
 
 
 Meeting Minutes April 23, 2013
+
+- The use of .destroy or .delete can be used to remove the has_many relationshiop that we will use to implement our models
+- We will attempt to use urls without authentication to send in room requests
+- An ajax refresh will be used periodically to make sure a user's information is up to date
+_ MVP design will focus on the functionality of the room's controller, submitting mobile check ins
