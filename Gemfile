@@ -7,6 +7,8 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 gem 'haml-rails'
+gem 'certified'
+gem 'koala', :git => 'https://github.com/arsduo/koala.git'
 
 gem 'json'
 
