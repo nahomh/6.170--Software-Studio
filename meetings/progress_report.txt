@@ -1,11 +1,11 @@
 Progress Report and Overall Plan:
 
 Design:
-- Schema Implementation
-- Object Model
-- User Model design
-- Implementation design
-- User interface
+- Schema Implementation (In Progress)
+- Object Model (In Progress)
+- User Model design (Complete)
+- Implementation design 
+- User interface (In Progress)
 
 
 Development: 
