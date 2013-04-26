@@ -11,6 +11,7 @@ class Room < ActiveRecord::Base
     update_attributes(:user_id => nil, :occupied => false)
   end
 
+#Google Maps for Rails API Methods
   def gmaps4rails_address
     "#{latitude}, #{longitude}"
   end
