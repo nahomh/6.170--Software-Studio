@@ -26,7 +26,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
+ gem "system_timer", "~> 1.2.4"
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password

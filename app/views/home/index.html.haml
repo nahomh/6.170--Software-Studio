@@ -2,10 +2,9 @@
 Find me in app/views/home/index.html.erb 
 <br>
 -for room in @rooms
-	=room.name
-	=room.description
-	=room.latitude
-	=room.longitude
-	<br>
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{room.latitude}%2C#{room.longitude}" %>
-
+  .room
+    =room.name
+    =room.description
+    =room.latitude
+    =room.longitude
+    =room.occupied
