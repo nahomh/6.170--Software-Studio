@@ -1,10 +1,15 @@
 %h1 Home
 Find me in app/views/home/index.html.erb 
-<br>
+%br
 -for room in @rooms
+
   .room
     =room.name
     =room.description
     =room.latitude
     =room.longitude
     =room.occupied
+
+
+%br
+=gmaps4rails(@json)
