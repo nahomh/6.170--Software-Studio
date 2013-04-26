@@ -17,6 +17,24 @@ class RoomsController < ApplicationController
     end
   end
 
+  def checkout
+    @room = Room.find(params[:id])
+    @room.checkout(current_user.id)
+    respond_to do |format|
+      format.html { redirect_to :back, notice: "Successfully checked room out" }
+      format.js {}
+    end
+  end
+
+  def checkin
+    @room = Room.find(params[:id])
+    @room.checkin
+    respond_to do |format|
+      format.html { redirect_to :back, notice: "Successfully checked room back in" }
+      format.js {}
+    end
+  end
+
   def new
     @room = Room.new
 
