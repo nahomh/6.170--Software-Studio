@@ -6,8 +6,6 @@ Find me in app/views/home/index.html.erb
 	=room.description
 	=room.latitude
 	=room.longitude
-	%br
-	= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{room.latitude}%2C#{room.longitude}"
-  
 
-
+%br
+=gmaps4rails(@json)
