@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @rooms }
+      format.json { render :json => @rooms }
     end
   end
 
@@ -13,7 +13,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @room }
+      format.json { render :json  => @room }
     end
   end
 
@@ -21,7 +21,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:room_id])
     @room.checkout(current_user.id)
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Successfully checked room out" }
+      format.html { redirect_to :back, :notice => "Successfully checked room out" }
       format.js {}
     end
   end
@@ -30,7 +30,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:room_id])
     @room.checkin
     respond_to do |format|
-      format.html { redirect_to :back, notice: "Successfully checked room back in" }
+      format.html { redirect_to :back, :notice => "Successfully checked room back in" }
       format.js {}
     end
   end
@@ -40,7 +40,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @room }
+      format.json { render :json => @room }
     end
   end
 
@@ -53,11 +53,11 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to @room, notice: 'Room was successfully created.' }
-        format.json { render json: @room, status: :created, location: @room }
+        format.html { redirect_to @room, :notice =>'Room was successfully created.' }
+        format.json { render :json => @room, :status => :created, :location => @room }
       else
-        format.html { render action: "new" }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.html { render :action => "new" }
+        format.json { render :json => @room.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -67,11 +67,11 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.update_attributes(params[:room])
-        format.html { redirect_to @room, notice: 'Room was successfully updated.' }
+        format.html { redirect_to @room, :notice => 'Room was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @room.errors, :status => :unprocessable_entity }
       end
     end
   end

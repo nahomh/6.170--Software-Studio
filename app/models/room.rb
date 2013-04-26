@@ -3,13 +3,12 @@ class Room < ActiveRecord::Base
   attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name
   belongs_to :user
 
-  def checkout(uid)
-    update_attributes(:user_id => uid, :occupied => true)
+  def checkout(user_id)
+    update_attributes(:user_id => user_id, :occupied => true)
   end
 
   def checkin
-    update_attributes(:occupied => false)
-    user.delete
+    update_attributes(:user_id => nil, :occupied => false)
   end
 
   def gmaps4rails_address
