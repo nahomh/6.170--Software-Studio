@@ -6,6 +6,6 @@ test:
   app_id: 135573463297756
   secret: 32fbad0b27d9dd53ac3a3d5b578c5750 
 
-prodution:
+production:
   app_id: 399208100187088 
   secret: 30eea6e07034d0400aba2d4de585f9a5 
