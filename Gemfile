@@ -26,7 +26,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-gem "system_timer", "~> 1.2.4"
 
 
 gem 'gmaps4rails'
