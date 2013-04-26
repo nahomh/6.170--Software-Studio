@@ -11,19 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130422225909) do
+ActiveRecord::Schema.define(:version => 20130426000600) do
 
   create_table "rooms", :force => true do |t|
     t.string   "description"
     t.boolean  "occupied"
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "student_id"
     t.string   "room_number"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.string   "name"
+    t.integer  "user_id"
   end
+
+  add_index "rooms", ["user_id"], :name => "index_rooms_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "provider"
