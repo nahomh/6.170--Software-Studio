@@ -2,6 +2,6 @@
 
 .actions
   -if @room.occupied
-    =link_to "Check room in", room_checkin_path(@room), :method => "PUT"
+    =link_to "Check room in", room_checkin_path(@room)#, :method => "PUT"
   -else
-    =link_to "Check out room", room_checkout_path(@room), :method => "PUT"
+    =link_to "Check out room", room_checkout_path(@room)#, :method => "PUT"
