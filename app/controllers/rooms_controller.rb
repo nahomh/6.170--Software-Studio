@@ -18,7 +18,7 @@ class RoomsController < ApplicationController
   end
 
   def checkout
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:room_id])
     @room.checkout(current_user.id)
     respond_to do |format|
       format.html { redirect_to :back, notice: "Successfully checked room out" }
@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
   end
 
   def checkin
-    @room = Room.find(params[:id])
+    @room = Room.find(params[:room_id])
     @room.checkin
     respond_to do |format|
       format.html { redirect_to :back, notice: "Successfully checked room back in" }
