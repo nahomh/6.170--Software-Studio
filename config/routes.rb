@@ -1,7 +1,10 @@
 Activate::Application.routes.draw do
   get "home/index"
 
-  resources "rooms"
+  resources "rooms" do
+    put 'checkout'
+    put 'checkin'
+  end
 
   get "sessions/create"
 
