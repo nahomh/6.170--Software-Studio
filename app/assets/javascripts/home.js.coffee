@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  setInterval refresh_rooms, 2000
+  setInterval refresh_rooms, 6000
   
 refresh_rooms = (event) ->
   rooms = $(".room")
@@ -12,11 +12,11 @@ refresh_rooms = (event) ->
     $.ajax
       url: "/rooms/"+room[0]['id']+"/refresh"
       data: null
-      dataType: "json"
+      dataType: "script"
       type: "GET"
       complete: (data) ->
         new_room = $("<div></div>")
         new_room.append(data.responseText)
         room_parent = room.parent()
         room_parent.append(new_room)
-        room.delete
+        room.remove()
