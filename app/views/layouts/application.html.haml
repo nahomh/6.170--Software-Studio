@@ -1,19 +1,25 @@
 !!!
 %html
   %head
-    %title Activate
+    %title MITspaces
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield :scripts
 
   %body  
-    .user-nav
-      -if current_user
-        Signed in as 
-        = current_user.name
-        = link_to "Sign out", signout_path, :id =>  "sign_out"
-      -else
-        = link_to "Sign in with Facebook", "/auth/facebook", :id => "sign_in"
-    =flash[:notice]
-    = yield
+    .container
+      .navbar
+        .navbar-inner
+          = link_to "MITspaces", root_path, {:class => "brand"}
+          %ul.nav
+            -if current_user
+              %li
+                = link_to current_user.name, root_path
+              %li
+                = link_to "Sign out", signout_path, :id =>  "sign_out"
+            -else
+              %li
+                = link_to image_tag("small-facebook-icon.png") + " Sign in with Facebook", "/auth/facebook", :id => "sign_in"
+      =flash[:notice]
+      = yield
