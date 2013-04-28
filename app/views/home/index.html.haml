@@ -5,10 +5,12 @@
   .room
     =room.name
     =room.description
-    =room.latitude
-    =room.longitude
-    =room.occupied
-
+    -if room.occupied
+      %span.busy
+        Occupied
+    -else
+      %span.available
+        Available
 
 %br
 =gmaps4rails(@json)
