@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.order("id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
