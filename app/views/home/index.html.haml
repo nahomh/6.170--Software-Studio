@@ -1,16 +1,8 @@
 %h1 MITspaces
 %br
--for room in @rooms
-
-  .room
-    =room.name
-    =room.description
-    -if room.occupied
-      %span.busy
-        Occupied
-    -else
-      %span.available
-        Available
-
+.rooms
+  -for room in @rooms
+    = render :partial => 'rooms/room', :locals => {:room => room}
+  
 %br
 =gmaps4rails(@json)

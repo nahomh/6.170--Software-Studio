@@ -36,6 +36,14 @@ class RoomsController < ApplicationController
     end
   end
 
+  def refresh
+    @room = Room.find(params[:room_id])
+    respond_to do |format|
+      format.json { render :partial => "room", :locals => {:room => @room}, :layout => false }
+      format.html
+    end
+  end 
+
   def new
     @room = Room.new
 

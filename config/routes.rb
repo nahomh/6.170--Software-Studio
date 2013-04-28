@@ -6,6 +6,7 @@ Activate::Application.routes.draw do
   resources "rooms" do
     get 'checkout'
     get 'checkin'
+    get 'refresh'
   end
 
   get "sessions/create"
