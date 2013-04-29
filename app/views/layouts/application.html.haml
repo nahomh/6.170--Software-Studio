@@ -21,5 +21,10 @@
             -else
               %li
                 = link_to image_tag("small-facebook-icon.png") + " Sign in with Facebook", "/auth/facebook", :id => "sign_in"
-      =flash[:notice]
+      -if flash[:notice]
+        .alert.alert-success
+          =flash[:notice]
+      -if flash[:error]
+        .alert.alert-error
+          =flash[:error]
       = yield

@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
         format.js {}
       else
         unless @room.checkout(current_user.id)
-          format.html { redirect_to @room, :notice => "Room is currently in use." }
+          format.html { redirect_to @room, :error => "Room is currently in use." }
           format.js {}
         else
           format.html { redirect_to @room, :notice => "Successfully checked room out" }
