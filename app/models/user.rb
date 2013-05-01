@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid, :room_id
+  attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid, :room_id, :longitude, :latitude
   belongs_to :room
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
@@ -11,7 +11,11 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-
+  def update_location(longitude, latitude)
+    self.longitude = longitude
+    self.latitude = latitude
+    self.save
+  end
   def checkin
     update_attributes(:room_id => nil)
   end

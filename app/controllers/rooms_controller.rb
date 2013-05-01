@@ -17,10 +17,10 @@ class RoomsController < ApplicationController
     end
   end
   def location
-    print "wtf"
+    current_user.update_location(params[:longitude], params[:latitude])
+    @room = Room.first
     respond_to do |format|
-      format.js 
-      format.html
+      format.js {render @room}
     end
   end
   def checkout

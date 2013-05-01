@@ -6,10 +6,11 @@
     -if current_user.room == @room
       =link_to "Check room in", room_checkout_path(@room)#, :method => "PUT"
   -else
-    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT"
+    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
+=@room.longitude
+=@room.latitude
 
 
 %p#demo Click the button to get your coordinates:
 
-%button#try Try it
 
