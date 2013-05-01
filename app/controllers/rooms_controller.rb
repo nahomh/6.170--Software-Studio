@@ -17,14 +17,14 @@ class RoomsController < ApplicationController
     end
   end
 
-#  def location
-#    current_user.update_location(params[:longitude], params[:latitude])
-#    @room = Room.first
-#    respond_to do |format|
-#      format.html
-#      format.js {render @room}
-#    end
-#  end
+  def new_location
+    current_user.update_location(params[:longitude], params[:latitude])
+    @room = Room.first
+    respond_to do |format|
+      format.html
+      format.js {render @room}
+    end
+  end
 
   def checkout
     @room = Room.find(params[:room_id])
