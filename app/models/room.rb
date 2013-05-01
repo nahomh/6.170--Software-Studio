@@ -1,18 +1,18 @@
 class Room < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => false
   attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name
-  belongs_to :user
+  has_many :users
 
-  def checkout(user_id)
+  def checkout
     if occupied
       return false
     else
-      return update_attributes(:user_id => user_id, :occupied => true)
+      return update_attributes(:occupied => true)
     end
   end
 
   def checkin
-    update_attributes(:user_id => nil, :occupied => false)
+    update_attributes(:occupied => false)
   end
 
   def gmaps4rails_address
