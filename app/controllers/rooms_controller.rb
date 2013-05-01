@@ -31,7 +31,7 @@ class RoomsController < ApplicationController
           format.html { redirect_to @room, :notice => "Successfully checked room out" }
           format.js {}
         else
-          format.html { redirect_to @room, :error => "Room is currently in use." }
+          format.html { redirect_to @room, :flash => {:error => "Room is currently in use." }}
           format.js {}
         end
       end
