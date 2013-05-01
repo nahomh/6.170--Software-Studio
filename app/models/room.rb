@@ -4,7 +4,11 @@ class Room < ActiveRecord::Base
   belongs_to :user
 
   def checkout(user_id)
-    update_attributes(:user_id => user_id, :occupied => true)
+    if occupied
+      return false
+    else
+      return update_attributes(:user_id => user_id, :occupied => true)
+    end
   end
 
   def checkin

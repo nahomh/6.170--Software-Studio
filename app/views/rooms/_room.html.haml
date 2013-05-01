@@ -1,0 +1,10 @@
+.room{:id => room.id}
+  =room.name
+  =room.description
+  -if room.occupied
+    %span.busy
+      Occupied
+  -else
+    %span.available
+      Available
+

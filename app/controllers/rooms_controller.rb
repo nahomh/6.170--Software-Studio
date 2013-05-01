@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.order("id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,21 +19,30 @@ class RoomsController < ApplicationController
 
   def checkout
     @room = Room.find(params[:room_id])
-    @room.checkout(current_user.id)
     respond_to do |format|
-      format.html { redirect_to :back, :notice => "Successfully checked room out" }
-      format.js {}
+      if @room.user == current_user
+        @room.checkin
+        format.html { redirect_to @room, :notice => "Successfully checked room back in" }
+        format.js {}
+      else
+        unless @room.checkout(current_user.id)
+          format.html { redirect_to @room, :error => "Room is currently in use." }
+          format.js {}
+        else
+          format.html { redirect_to @room, :notice => "Successfully checked room out" }
+          format.js {}
+        end
+      end
     end
   end
 
-  def checkin
+  def refresh
     @room = Room.find(params[:room_id])
-    @room.checkin
     respond_to do |format|
-      format.html { redirect_to :back, :notice => "Successfully checked room back in" }
-      format.js {}
+      format.js { render :partial => 'rooms/room', :locals => {:room => @room} }
+      format.html
     end
-  end
+  end 
 
   def new
     @room = Room.new

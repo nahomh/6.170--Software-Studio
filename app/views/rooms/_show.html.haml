@@ -1,0 +1,8 @@
+%h3= room.name
+
+.actions
+  -if room.occupied
+    -if room.user == current_user
+      =link_to "Check room in", room_checkout_path(room)#, :method => "PUT"
+  -else
+    =link_to "Check out room", room_checkout_path(room)#, :method => "PUT"
