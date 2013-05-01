@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  setInterval refresh_roous, 9000
+  setInterval refresh_rooms, 9000
   
 refresh_rooms = (event) ->
   rooms = $(".room")

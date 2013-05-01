@@ -4,5 +4,8 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+  def graph
+    @graph = Koala::Facebook::API.new(current_user.oauth_token)
+  end
   helper_method :current_user
 end
