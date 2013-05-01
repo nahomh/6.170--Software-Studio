@@ -5,5 +5,7 @@
   -if @room.occupied
     -if current_user.room == @room
       =link_to "Check room in", room_checkout_path(@room)#, :method => "PUT"
+    -else
+      ="Room is already in use by #{@room.users.each do |user| { user.name }}"
   -else
     =link_to "Check out room", room_checkout_path(@room)#, :method => "PUT"
