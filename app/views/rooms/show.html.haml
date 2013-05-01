@@ -8,4 +8,11 @@
     -else
       ="Room is already in use by #{@room.users.each do |user| { user.name }}"
   -else
-    =link_to "Check out room", room_checkout_path(@room)#, :method => "PUT"
+    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
+=@room.longitude
+=@room.latitude
+
+
+%p#demo Click the button to get your coordinates:
+
+
