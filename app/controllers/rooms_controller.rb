@@ -16,7 +16,13 @@ class RoomsController < ApplicationController
       format.json { render :json  => @room }
     end
   end
-
+  def location
+    current_user.update_location(params[:longitude], params[:latitude])
+    @room = Room.first
+    respond_to do |format|
+      format.js {render @room}
+    end
+  end
   def checkout
     @room = Room.find(params[:room_id])
     respond_to do |format|
@@ -31,7 +37,7 @@ class RoomsController < ApplicationController
           format.html { redirect_to @room, :notice => "Successfully checked room out" }
           format.js {}
         else
-          format.html { redirect_to @room, :error => "Room is currently in use." }
+          format.html { redirect_to @room, :flash => {:error => "Room is currently in use." }}
           format.js {}
         end
       end
