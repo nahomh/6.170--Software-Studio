@@ -1,8 +1,21 @@
-.rooms
-  -for room in @rooms
-    = render :partial => 'rooms/room', :locals => {:room => room}
-  
-=link_to "Rooms", rooms_path
-%br
-= gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "auto_zoom" => false, "zoom" => 7},"markers" => { "data" => @json })
+.row-fluid
+  .span3
+    .friends
+      -@friends.each do |friend|
+        .friend{:id => friend.id}
+          =friend.name
+          .occupying
+            -if friend.room
+              =friend.room.name
+            -else 
+              isn't studying right now.
+      
+  .span9
+    .rooms
+      -for room in @rooms
+        = render :partial => 'rooms/room', :locals => {:room => room}
+      
+    =link_to "Rooms", rooms_path
+    %br
+    = gmaps("map_options" => { "detect_location" => true, "center_on_user" => false, "auto_zoom" => false, "zoom" => 7},"markers" => { "data" => @json })
 

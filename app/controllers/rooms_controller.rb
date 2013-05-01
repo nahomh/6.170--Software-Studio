@@ -26,16 +26,18 @@ class RoomsController < ApplicationController
   def checkout
     @room = Room.find(params[:room_id])
     respond_to do |format|
-      if @room.user == current_user
+      if @room.users.include?(current_user)
         @room.checkin
+        current_user.checkin
         format.html { redirect_to @room, :notice => "Successfully checked room back in" }
         format.js {}
       else
-        unless @room.checkout(current_user.id)
-          format.html { redirect_to @room, :error => "Room is currently in use." }
+        if @room.checkout  
+          current_user.checkout(@room.id)
+          format.html { redirect_to @room, :notice => "Successfully checked room out" }
           format.js {}
         else
-          format.html { redirect_to @room, :notice => "Successfully checked room out" }
+          format.html { redirect_to @room, :error => "Room is currently in use." }
           format.js {}
         end
       end
