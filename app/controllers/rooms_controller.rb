@@ -16,13 +16,16 @@ class RoomsController < ApplicationController
       format.json { render :json  => @room }
     end
   end
-  def location
-    current_user.update_location(params[:longitude], params[:latitude])
-    @room = Room.first
-    respond_to do |format|
-      format.js {render @room}
-    end
-  end
+
+#  def location
+#    current_user.update_location(params[:longitude], params[:latitude])
+#    @room = Room.first
+#    respond_to do |format|
+#      format.html
+#      format.js {render @room}
+#    end
+#  end
+
   def checkout
     @room = Room.find(params[:room_id])
     respond_to do |format|
