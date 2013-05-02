@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Math
   attr_accessible :name, :oauth_expires_at, :oauth_token, :provider, :uid, :room_id, :longitude, :latitude
   belongs_to :room
   def self.from_omniauth(auth)
@@ -48,5 +49,17 @@ class User < ActiveRecord::Base
     friends = friend_ids(graph)
     friends.map{ |friend| User.find(friend) }
   end
-
+  #haversine formula to calculate distance between two coordinates
+  def close_to_room(room)
+    r = 6371
+    rad = Math::PI/180
+    dLat = (self.latitude - room.latitude)*rad
+    dLong = (self.longitude - room.longitude)*rad
+    lat1 = self.latitude*rad
+    lat2 = room.latitude*rad
+    a = Math.sin(dLat/2)*Math.sin(dLat/2)+ Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLong/2)*Math.sin(dLong/2)
+    c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    d = r * c 
+    return d
+  end  
 end

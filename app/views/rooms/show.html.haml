@@ -5,14 +5,19 @@
 .occupants
   -if @room.occupied
     Currently in use by:
+
     -@room.users.each do |user|
-      .user
-        =user.name
-        =user.email
+      - if curren_user = user
+        .user
+          You
+      - else
+        .user
+          =user.name
+          =user.email
 
 .actions
   -if current_user.room == @room
-    =link_to "Check room in", room_checkout_path(@room)#, :method => "PUT"
+    =link_to "Check room in", room_checkout_path(@room), :class => 'checkout'#, :method => "PUT"
   -else
     =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
 

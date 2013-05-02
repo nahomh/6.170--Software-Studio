@@ -7,7 +7,7 @@ Activate::Application.routes.draw do
     get 'checkout'
     get 'checkin'
     get 'refresh'
-    get 'new_location'
+    put 'new_location'
   end
 
   get "sessions/create"

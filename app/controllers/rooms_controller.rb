@@ -22,7 +22,8 @@ class RoomsController < ApplicationController
     @room = Room.first
     print "yes!!"
     respond_to do |format|
-      format.js {render @room,  :notice => "workings now"}
+      format.js {render :nothing => true }
+
     end
   end
 

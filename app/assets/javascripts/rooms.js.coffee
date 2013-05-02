@@ -19,7 +19,10 @@ showPosition = (position) ->
     url: '1/new_location'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
-    type: "GET"
+    type: "PUT"
+    complete: (data) ->
+      new_room = $("<div></div>")
+      new_room.append(data.responseText)
 
 
 
