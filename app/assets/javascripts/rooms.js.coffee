@@ -1,12 +1,13 @@
 $ ->
-  $("#try").click getlocation
+
+ 
+  $(".actions").ready getlocation
   
  
           
 getlocation = (event) ->
   if navigator.geolocation
       navigator.geolocation.getCurrentPosition(showPosition)
-
   
   console.log('talkjfafs')
   
@@ -16,13 +17,13 @@ showPosition = (position) ->
   $("#demo").html("latitude:"+position.coords.latitude+'<br>'+
     "longitude:"+position.coords.longitude)
   $.ajax
-    url: '/rooms/1/location'
+    url: '1/new_location'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
-    type: "GET"
-    complete: (data)->
-      alert("this wis workigns sorta")
-
+    type: "PUT"
+    complete: (data) ->
+      new_room = $("<div></div>")
+      new_room.append(data.responseText)
 
 
 
