@@ -20,9 +20,9 @@ class RoomsController < ApplicationController
   def new_location
     current_user.update_location(params[:longitude], params[:latitude])
     @room = Room.first
+    print "yes!!"
     respond_to do |format|
-      format.html
-      format.js {render @room}
+      format.js {render @room,  :notice => "workings now"}
     end
   end
 

@@ -16,13 +16,10 @@ showPosition = (position) ->
   $("#demo").html("latitude:"+position.coords.latitude+'<br>'+
     "longitude:"+position.coords.longitude)
   $.ajax
-    url: '/rooms/1/location'
+    url: '1/new_location'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
     type: "GET"
-    complete: (data)->
-      alert("this wis workigns sorta")
-
 
 
 

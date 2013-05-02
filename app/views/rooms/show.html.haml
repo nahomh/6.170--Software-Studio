@@ -1,16 +1,16 @@
 %h3= @room.name
-
+=current_user.room
+= @room.latitude
 .actions
   -if @room.occupied
     -if current_user.room == @room
-      =link_to "Check room in", room_checkout_path(@room)#, :method => "PUT"
-    -else
+      =link_to "Check room in", room_checkout_path(@room), :class => "checkout" #:method => "PUT"
   -else
-    =link_to "Check out room", room_checkout_path(@room)#, :method => "PUT
-=@room.longitude
-=@room.latitude
+    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
+
 
 
 %p#demo Click the button to get your coordinates:
 
+%button#try Try it
 
