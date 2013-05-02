@@ -11,6 +11,9 @@
               isn't studying right now.
       
   .span9
+    .location
+      %p Your Coordinates:
+      %p#demo Click the button to get your coordinates:
     .rooms
       -for room in @rooms
         = render :partial => 'rooms/room', :locals => {:room => room}
