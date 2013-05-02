@@ -1,5 +1,7 @@
 Activate::Application.routes.draw do
-  resources :users
+  get "users/show"
+
+  resources "users"
 
   get "home/index"
 
