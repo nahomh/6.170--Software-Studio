@@ -1,10 +1,18 @@
 %h3= @room.name
 =current_user.room
 = @room.latitude
-.actions
+
+.occupants
   -if @room.occupied
-    -if current_user.room == @room
-      =link_to "Check room in", room_checkout_path(@room), :class => "checkout" #:method => "PUT"
+    Currently in use by:
+    -@room.users.each do |user|
+      .user
+        =user.name
+        =user.email
+
+.actions
+  -if current_user.room == @room
+    =link_to "Check room in", room_checkout_path(@room)#, :method => "PUT"
   -else
     =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
 
