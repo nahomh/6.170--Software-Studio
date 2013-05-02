@@ -1,12 +1,13 @@
 $ ->
-  $("#try").click getlocation
+
+ 
+  $(".actions").ready getlocation
   
  
           
 getlocation = (event) ->
   if navigator.geolocation
       navigator.geolocation.getCurrentPosition(showPosition)
-
   
   console.log('talkjfafs')
   
