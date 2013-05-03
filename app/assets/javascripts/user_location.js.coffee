@@ -1,7 +1,7 @@
 $ ->
 
  
-  $(".actions").ready getlocation
+  $(".map_container").ready getlocation
   
  
           
@@ -17,7 +17,7 @@ showPosition = (position) ->
   $("#demo").html("latitude:"+position.coords.latitude+'<br>'+
     "longitude:"+position.coords.longitude)
   $.ajax
-    url: '1/new_location'
+    url: '<%= set_location_path %>'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
     type: "PUT"

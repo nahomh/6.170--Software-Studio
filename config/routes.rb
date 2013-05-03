@@ -4,6 +4,7 @@ Activate::Application.routes.draw do
   resources "users"
 
   get "home/index"
+  match "set_location" => 'users#set_location'
 
   resources "rooms" do
     get 'checkout'
