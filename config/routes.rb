@@ -1,15 +1,18 @@
 Activate::Application.routes.draw do
   get "users/show"
 
-  resources "users"
+  resources "users" do
+    put "set_location"
+  end 
 
   get "home/index"
+  match "set_location" => 'users#set_location'
 
   resources "rooms" do
     get 'checkout'
     get 'checkin'
     get 'refresh'
-    put 'new_location'
+    put 'set_location'
   end
 
   get "sessions/create"

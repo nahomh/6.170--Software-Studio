@@ -10,7 +10,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-
+    @distance = current_user.close_to_room(@room)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json  => @room }
@@ -30,20 +30,28 @@ class RoomsController < ApplicationController
   def checkout
     @room = Room.find(params[:room_id])
     respond_to do |format|
-      if @room.users.include?(current_user)
-        current_user.checkin
-        if @room.users.size == 0
-          @room.checkin
-        end
-        format.html { redirect_to @room, :notice => "Successfully checked room back in" }
-        format.js {}
+      if @room.users.include?(current_user) 
+        
+          current_user.checkin
+          if @room.users.size == 0
+            @room.checkin
+          end
+          format.html { redirect_to @room, :notice => "Successfully checked room back in" }
+          format.js {}
+
+        
       else
-        current_user.checkout(@room.id)
-        if !@room.occupied
-          @room.checkout
+        if  current_user.close_to_room(@room) < 1.0
+          current_user.checkout(@room.id)
+          if !@room.occupied
+            @room.checkout
+          end
+          format.html { redirect_to @room, :notice => "Successfully checked room out" }
+          format.js {}
+        else
+          format.html { redirect_to @room, :notice => "You are not close enough to the room" }
+          format.js {}
         end
-        format.html { redirect_to @room, :notice => "Successfully checked room out" }
-        format.js {}
         #else
         #  format.html { redirect_to @room, :flash => {:error => "You have already checked out this room." }}
         #  format.js {}
