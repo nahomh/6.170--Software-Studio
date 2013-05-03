@@ -12,12 +12,13 @@ getlocation = (event) ->
   console.log('talkjfafs')
   
 showPosition = (position) ->
+  user = $(".user")
   console.log(position.coords.latitude)
   console.log(position.coords.longitude)
   $("#demo").html("latitude:"+position.coords.latitude+'<br>'+
     "longitude:"+position.coords.longitude)
   $.ajax
-    url: '<%= set_location_path %>'
+    url: user[0]+'/set_location'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
     type: "PUT"

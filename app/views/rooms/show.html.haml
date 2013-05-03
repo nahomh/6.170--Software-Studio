@@ -1,6 +1,8 @@
 %h3= @room.name
-=current_user.room
+= current_user.room
 = @room.latitude
+= @room.longitude
+= @distance
 
 .occupants
   -if @room.occupied
