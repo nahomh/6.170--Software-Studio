@@ -9,7 +9,7 @@ Agenda May 3, 2013:
 3). Discuss Logistical issues with the UA
 	- How to best approach competing projects
 	- Implement with the help of student organization or not
-4). Explaination of final presentation
+4). Explanation of final presentation
 	- When is final code implemented
 	- Criteria for presentation
 
