@@ -10,10 +10,10 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    @distance = current_user.close_to_room(@room)
     respond_to do |format|
       format.html # show.html.erb
       format.json { render :json  => @room }
+      format.js {}
     end
   end
 
@@ -23,7 +23,6 @@ class RoomsController < ApplicationController
     print "yes!!"
     respond_to do |format|
       format.js {render :nothing => true }
-
     end
   end
 

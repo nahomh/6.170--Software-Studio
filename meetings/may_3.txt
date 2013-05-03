@@ -1,0 +1,19 @@
+Agenda May 3, 2013:
+
+1). Discuss check-in issues
+	- Gps based checkout: difficult and inconsistant
+	- Allow users to check-in based on gps
+	- set time checkins (1 hr interval)
+2). Ask about GeoLocation problems
+	- Information on timeout issues
+3). Discuss Logistical issues with the UA
+	- How to best approach competing projects
+	- Implement with the help of student organization or not
+4). Explaination of final presentation
+	- When is final code implemented
+	- Criteria for presentation
+
+
+Meeting Minutes May 3, 2013
+
+
