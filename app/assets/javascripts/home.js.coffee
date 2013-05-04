@@ -3,17 +3,6 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  $('#game_user_tokens').tokenInput('/users.json', {
-    crossDomain: false,
-    onAdd: friend_handler,
-    hintText: "Type in a friend's name",
-    tokenFormatter: (item) ->
-      return "<li>" + "<img src='" + item.url + "' title='" + item.name + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='name'>" + item.name + "</div></div></li>"
-    ,
-    resultsFormatter: (item) ->
-      return "<li>" + "<img src='" + item.url + "' title='" + item.name + "' height='25px' width='25px' />" + "<div style='display: inline-block; padding-left: 10px;'><div class='name'>" + item.name + "</div></div></li>"
-  });
-
   setInterval refresh_rooms, 9000
   
 refresh_rooms = (event) ->

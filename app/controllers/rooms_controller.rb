@@ -1,32 +1,5 @@
 class RoomsController < ApplicationController
   before_filter :require_login, :only => [:show]
-  def index
-    if Rails.env.production?
-      @rooms = User.where("room_number ilike ?", "%#{params[:q]}%")
-    else
-      @rooms = User.where("room_number like ?", "%#{params[:q]}%")
-    end
-    @friends = @friends.map(&:attributes)
-
-    @friends.order_by("id DESC")
-
-    @friends.each do |friend|
-      friend[:url] = graph.get_picture(friend["uid"].to_i)
-      friend_obj = User.find(friend["id"])
-      friend[:last_five] = friend_obj.last_five(session[:level])
-    end
-    respond_to do |format|
-      format.html
-      format.json { render :json => @friends }
-    end
-    @rooms = Room.order("id DESC")
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @rooms }
-    end
-  end
-
   def show
     @room = Room.find(params[:id])
     respond_to do |format|
