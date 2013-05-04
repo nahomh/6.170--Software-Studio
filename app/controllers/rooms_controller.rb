@@ -1,4 +1,5 @@
 class RoomsController < ApplicationController
+  before_filter :require_login, only: [:show]
   def index
     @rooms = Room.order("id DESC")
 
@@ -48,7 +49,7 @@ class RoomsController < ApplicationController
           format.html { redirect_to @room, :notice => "Successfully checked room out" }
           format.js {}
         else
-          format.html { redirect_to @room, :notice => "You are not close enough to the room" }
+          format.html { redirect_to @room, :flash => {:error => "You are not close enough to the room"} }
           format.js {}
         end
         #else
