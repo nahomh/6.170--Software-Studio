@@ -46,8 +46,8 @@ class User < ActiveRecord::Base
   end
 
   def friends(graph)
-    friends = friend_ids(graph)
-    friends.map{ |friend| User.find(friend) }
+    friends = User.where(:id => friend_ids(graph))
+
   end
   #haversine formula to calculate distance between two coordinates
   def close_to_room(room)

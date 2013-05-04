@@ -7,6 +7,9 @@ class RoomsController < ApplicationController
       @rooms = User.where("room_number like ?", "%#{params[:q]}%")
     end
     @friends = @friends.map(&:attributes)
+
+    @friends.order_by("id DESC")
+
     @friends.each do |friend|
       friend[:url] = graph.get_picture(friend["uid"].to_i)
       friend_obj = User.find(friend["id"])
