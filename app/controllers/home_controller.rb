@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def index
   	@rooms = Room.order("id DESC")
+    if current_user
+      @graph = graph
+    end
     @json = @rooms.to_gmaps4rails do |room, marker|
       if room.occupied?
       marker.picture({

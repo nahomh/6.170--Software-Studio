@@ -1,14 +1,15 @@
 .row-fluid
   .span3
-    .friends
-      -@friends.each do |friend|
-        .friend{:id => friend.id}
-          =friend.name
-          .occupying
-            -if friend.room
-              is studying in #{friend.room.name}
-            -else 
-              isn't studying right now.
+    -if current_user
+      .friends
+        -@friends.each do |friend|
+          .friend{:id => friend.id}
+            = link_to image_tag(@graph.get_picture(friend.uid)) + " friend.name", friend
+            .occupying
+              -if friend.room
+                is studying in #{friend.room.name}
+              -else 
+                isn't studying right now.
       
   .span9
     %table.table
