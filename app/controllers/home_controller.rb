@@ -21,8 +21,11 @@ class HomeController < ApplicationController
       end
     end
     @friends = []
+
+    print "wtfwtfwtf"
     if current_user
-      @friends = current_user.friends(graph)
+      @friends = current_user.friends(graph).order("room_id DESC ")
+   	  print @friends
     end
   end
   def sort_column

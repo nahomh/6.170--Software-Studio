@@ -1,13 +1,5 @@
 class RoomsController < ApplicationController
   before_filter :require_login, :only => [:show]
-  def index
-    @rooms = Room.all
-    respond_to do |format|
-      format.html
-      format.json { render :json => @rooms }
-    end
-  end
-
   def show
     @room = Room.find(params[:id])
     respond_to do |format|
