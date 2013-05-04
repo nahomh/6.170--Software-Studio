@@ -12,12 +12,14 @@
                 isn't studying right now.
       
   .span9
+    .room-search
+      =render :partial => "rooms/search"
     %table.table
-      %thead
-        %th Room Number
-        %th Room Name
+      %thead.sortable
+        %th= sortable "room_number"
+        %th= sortable "name", "Room Name"
         %th Description
-        %th Current Status
+        %th= sortable "occupied", "Current Status"
       %tbody
       -for each in @rooms
         - if each.occupied
@@ -38,6 +40,7 @@
               %td Occupied
             -else
               %td Available
+    =will_paginate @rooms
     -#
       .location
         %p#demo Coordinates:
