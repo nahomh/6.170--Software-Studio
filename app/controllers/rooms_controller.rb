@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_filter :require_login, only: [:show]
+  before_filter :require_login, :only => [:show]
   def index
     @rooms = Room.order("id DESC")
 
