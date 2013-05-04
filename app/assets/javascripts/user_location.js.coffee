@@ -7,10 +7,11 @@ $ ->
           
 getlocation = (event) ->
   if navigator.geolocation
-      navigator.geolocation.getCurrentPosition(showPosition)
+      navigator.geolocation.getCurrentPosition(showPosition, errorPosition, {timeout:10000})
   
   console.log('talkjfafs')
-  
+errorPosition = (position) =>
+  console.log("could not capture date")
 showPosition = (position) ->
   user = $(".user")
   console.log(position.coords.latitude)

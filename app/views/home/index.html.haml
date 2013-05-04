@@ -11,6 +11,32 @@
               isn't studying right now.
       
   .span9
+    %table.table
+      %thead
+        %th Room Number
+        %th Room Name
+        %th Description
+        %th Current Status
+      %tbody
+      -for each in @rooms
+        - if each.occupied
+          %tr.error
+            %td=each.room_number
+            %td=each.name
+            %td=each.description
+            -if each.occupied
+              %td Occupied
+            -else
+              %td Available
+        -else
+          %tr.success
+            %td=each.room_number
+            %td=each.name
+            %td=each.description
+            -if each.occupied
+              %td Occupied
+            -else
+              %td Available
     .location
       %p Your Coordinates:
       %p#demo Click the button to get your coordinates:
