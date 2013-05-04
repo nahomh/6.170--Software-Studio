@@ -7,6 +7,27 @@ span.busy {
 span.available {
   background-color: green;
 }
+
+thead.sortable {
+  i {
+    display: none;
+    margin-left: 4px;
+  }
+
+  .asc {
+    i.icon-caret-up {
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+
+  .desc {
+    i.icon-caret-down {
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+}
 address{
 	margin: 0px;
 }

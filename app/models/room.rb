@@ -14,6 +14,19 @@ class Room < ActiveRecord::Base
   def checkin
     update_attributes(:occupied => false)
   end
+  
+  def self.search(q)
+    if q
+      if Rails.env.production?
+        rooms = where("room_number ilike ?", "%#{q}%")
+      else
+        rooms = where("room_number like ?", "%#{q}%")
+      end
+    else
+      rooms = scoped
+    end
+    return rooms
+  end
 
 #Google Maps for Rails API Methods
   def gmaps4rails_address

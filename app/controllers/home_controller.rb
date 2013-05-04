@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
+  helper_method :sort_column, :sort_direction
   def index
-  	@rooms = Room.order("id DESC")
+  	@rooms = Room.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     if current_user
       @graph = graph
     end
@@ -26,5 +27,12 @@ class HomeController < ApplicationController
       @friends = current_user.friends(graph).order("room_id DESC ")
    	  print @friends
     end
+  end
+  def sort_column
+    Room.column_names.include?(params[:sort]) ?  params[:sort] : "room_number"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:order]) ?  params[:order] : "asc"
   end
 end

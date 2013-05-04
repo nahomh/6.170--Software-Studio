@@ -11,6 +11,7 @@ end
 group :production do
 	gem 'pg'
 end
+gem 'will_paginate'
 gem 'haml-rails'
 gem 'certified'
 gem 'koala', :git => 'https://github.com/arsduo/koala.git'
