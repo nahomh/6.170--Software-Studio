@@ -1,13 +1,14 @@
 Progress Report and Overall Plan:
 
 Design:
-- Schema Implementation (In Progress)
-- Object Model (In Progress)
+- Schema Implementation (Completed)
+- Object Model (Completed)
 - User Model design (Complete)
 - Implementation design 
 - User interface (In Progress)
 
 
 Development: 
+- See Pri-list: https://docs.google.com/spreadsheet/ccc?key=0AjWUohgaz_N9dDdkbXE1S255ZGNQUUo0Z2tPdUN2bWc&usp=sharing
 
 Testing:
