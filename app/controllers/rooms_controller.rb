@@ -6,20 +6,14 @@ class RoomsController < ApplicationController
     else
       @rooms = User.where("room_number like ?", "%#{params[:q]}%")
     end
-    @friends = @friends.map(&:attributes)
-    @friends.each do |friend|
-      friend[:url] = graph.get_picture(friend["uid"].to_i)
-      friend_obj = User.find(friend["id"])
-      friend[:last_five] = friend_obj.last_five(session[:level])
-    end
+    @rooms = @rooms.map(&:attributes)
+    #@rooms.each do |room|
+    #  friend[:url] = graph.get_picture(friend["uid"].to_i)
+    #  friend_obj = User.find(friend["id"])
+    #  friend[:last_five] = friend_obj.last_five(session[:level])
+    #end
     respond_to do |format|
       format.html
-      format.json { render :json => @friends }
-    end
-    @rooms = Room.order("id DESC")
-
-    respond_to do |format|
-      format.html # index.html.erb
       format.json { render :json => @rooms }
     end
   end
