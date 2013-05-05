@@ -33,6 +33,6 @@ class Room < ActiveRecord::Base
     "#{latitude}, #{longitude}"
   end
   def gmaps4rails_infowindow
-    "Room Name:#{name} <br>Room Number:#{room_number}<br>Occupied:#{occupied} <br> Descritption: #{description}"
+    "Room Name:#{name} <br>Room Number:#{room_number}<br>Available:#{occupied} <br> Descritption: #{description}"
   end
 end
