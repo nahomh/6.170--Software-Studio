@@ -8,6 +8,10 @@ span.available {
   background-color: green;
 }
 
+tr.occupied-color{
+  cursor:pointer;
+}
+
 thead.sortable {
   i {
     display: none;
