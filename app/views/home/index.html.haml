@@ -10,7 +10,7 @@
               %h5.media-heading= link_to friend.name, friend
               .occupying
                 -if friend.room
-                  %address is studying in #{friend.room.name}
+                  %address is studying in #{friend.room.n.span12ame}
                 -else 
                   %address isn't studying right now.
       
@@ -52,5 +52,5 @@
           = render :partial => 'rooms/room', :locals => {:room => room}
         
     %br
-    .hidden-phone=gmaps("map_options" => { "detect_location" => true, "bounds" =>'[{"lat":42.36311,"lng":-71.110425},{"lat":42.350711,"lng":-71.076908}]'},"markers" => { "data" => @json })
+    .hidden-phone.span12=gmaps("map_options" => { "detect_location" => true, "bounds" =>'[{"lat":42.36311,"lng":-71.110425},{"lat":42.350711,"lng":-71.076908}]'},"markers" => { "data" => @json })
 
