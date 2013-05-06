@@ -6,7 +6,7 @@ end
 
 
 #Enabling mock data for unit tests
-OmniAuth.config.test_mode = true
+OmniAuth.config.test_mode = false
 
 raw_info = Hashie::Mash.new
 raw_info.email = “yourname@email.com”
