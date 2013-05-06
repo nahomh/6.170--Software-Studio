@@ -49,11 +49,11 @@ class RoomsController < ApplicationController
       end
     end
   end
-
+  
   def refresh
     @room = Room.find(params[:room_id])
     respond_to do |format|
-      format.js { render :partial => 'rooms/room', :locals => {:room => @room} }
+      format.json { render :json => @room }
       format.html
     end
   end 

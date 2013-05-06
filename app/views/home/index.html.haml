@@ -17,32 +17,8 @@
   .span9
     .room-search
       =render :partial => "rooms/search"
-    %table.table
-      %thead.sortable
-        %th= sortable "room_number"
-        %th= sortable "name", "Room Name"
-        %th Description
-        %th= sortable "occupied", "Current Status"
-      %tbody
-      -for each in @rooms
-        - if each.occupied
-          %tr.error
-            %td=each.room_number
-            %td=each.name
-            %td=each.description
-            -if each.occupied
-              %td Occupied
-            -else
-              %td Available
-        -else
-          %tr.success
-            %td=each.room_number
-            %td=each.name
-            %td=each.description
-            -if each.occupied
-              %td Occupied
-            -else
-              %td Available
+    .rooms-table
+      =render :partial => "rooms/table", :locals => {:rooms => @rooms}
     =will_paginate @rooms
     -#
       .location

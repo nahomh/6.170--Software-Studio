@@ -22,10 +22,13 @@ class HomeController < ApplicationController
     end
     @friends = []
 
-    print "wtfwtfwtf"
     if current_user
       @friends = current_user.friends(graph).order("room_id DESC ")
    	  print @friends
+    end
+    respond_to do |format|
+      format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms } }
+      format.html
     end
   end
   def sort_column
