@@ -1,6 +1,6 @@
 class Room < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => false
-  attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name
+  attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name, :projector_available, :whiteboard_available
   has_many :users
 
   def checkout
