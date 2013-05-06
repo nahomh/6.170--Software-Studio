@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     @friends = []
 
     if current_user
-      @friends = current_user.friends(graph).order("room_id DESC ")
+      @friends = current_user.friends(graph).order("room_id ASC ")
    	  print @friends
     end
     respond_to do |format|
