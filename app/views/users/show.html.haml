@@ -1,3 +1,8 @@
-%h5= @user.name
+%b= @user.name
 -if @user.room
-  Currently in #{@user.room.name}
+  is currently in #{@user.room.name}
+-else
+  is not currently studying in any room on campus
+
+.links
+  =link_to "Home", root_path
