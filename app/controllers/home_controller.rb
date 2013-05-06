@@ -27,7 +27,7 @@ class HomeController < ApplicationController
    	  print @friends
     end
     respond_to do |format|
-      format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms } }
+      format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms, :sort => sort_column, :order => sort_direction, :page => params[:page] } }
       format.html
     end
   end

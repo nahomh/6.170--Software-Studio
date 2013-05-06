@@ -14,13 +14,13 @@ search_handler = (event) ->
   console.log(JSON.stringify($(this).serialize()))
   $.ajax
     url: $(this).attr("action")
-    data: $(this).serialize
+    data: $(this).serialize()
     dataType: "script"
     method: "GET"
     complete: (data) ->
       new_table = $(data.responseText)
       console.log(new_table)
-      old_table.remove()
+      old_table_parent.children().remove()
       old_table_parent.append(new_table)
       $(".occupied-color").click relocation_handler
       $(".rooms-table th a").click sort_handler

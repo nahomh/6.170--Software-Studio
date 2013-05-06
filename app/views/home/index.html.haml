@@ -16,9 +16,16 @@
       
   .span9
     .room-search
-      =render :partial => "rooms/search"
-    .rooms-table
-      =render :partial => "rooms/table", :locals => {:rooms => @rooms}
+      =form_tag root_path, :method => "get", :class => "rooms-search" do
+        ="enter building or building-room number: "
+        = hidden_field_tag :order, params[:order]
+        = hidden_field_tag :sort, params[:sort]
+        -if params[:page]
+          = hidden_field_tag :page, params[:page]
+        = text_field_tag :search, params[:search], :id => 'search_field' 
+        = submit_tag "Search", :name => nil, :class => "btn"
+        .rooms-table
+          =render :partial => "rooms/table", :locals => {:rooms => @rooms, :sort => nil, :order => nil, :page => nil}
     =will_paginate @rooms
     -#
       .location

@@ -1,0 +1,25 @@
+= hidden_field_tag :order, order
+= hidden_field_tag :sort, sort
+-if page
+  = hidden_field_tag :page, page
+%table.table.table-hover
+  %thead.sortable
+    %th= sortable "room_number"
+    %th= sortable "name", "Room Name"
+    %th Description
+    %th= sortable "occupied", "Current Status"
+  %tbody
+  -for each in rooms
+    - if each.occupied
+      %tr.error.occupied-color{:id => each.id}
+        %td=each.room_number
+        %td=each.name
+        %td=each.description
+        %td.occupied-text Unavailable
+    -else
+      %tr.success.occupied-color{:id => each.id}
+        %td=each.room_number
+        %td=each.name
+        %td=each.description
+        %td.occupied-text Available
+
