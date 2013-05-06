@@ -1,6 +1,6 @@
 .row-fluid
   .span3
-    -if current_user
+    -if current_user && @friends.size > 0
       .friends.well
         -@friends.each do |friend|
           .media.friend{:id => friend.id}
@@ -17,7 +17,7 @@
   .span9
     .room-search
       =form_tag root_path, :method => "get", :class => "rooms-search" do
-        ="enter building or building-room number: "
+        ="Enter building or building-room number: "
         = text_field_tag :search, params[:search], :id => 'search_field' 
         = submit_tag "Search", :name => nil, :class => "btn"
 
@@ -29,4 +29,3 @@
       .gmaps4rails_map#map
         .span9#map_canvas
           .hidden-phone=gmaps("map_options" => { "detect_location" => true, "bounds" =>'[{"lat":42.36311,"lng":-71.110425},{"lat":42.350711,"lng":-71.076908}]'},"markers" => { "data" => @json })
-

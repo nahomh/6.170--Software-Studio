@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :room
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+      puts auth
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name

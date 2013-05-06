@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
+    Room.return_busy
     if params[:whiteboard_available] == 'true' && params[:projector_available] == 'true'
       @rooms = Room.search(params[:search]).where(:projector_available => true, :whiteboard_available => true).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     elsif params[:whiteboard_available] == 'true'

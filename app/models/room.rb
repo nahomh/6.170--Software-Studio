@@ -11,6 +11,16 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def self.return_busy
+    rooms = where(:occupied => true).where("updated_at < ?", 2.hours.ago)
+    rooms.each do |room|
+      room.users.each do |user|
+        user.checkin
+      end
+      room.checkin
+    end
+  end
+
   def checkin
     update_attributes(:occupied => false)
   end
