@@ -24,8 +24,10 @@
     .room-search
       =form_tag root_path, :method => "get", :class => "rooms-search" do
         ="Enter building or building-room number: "
-        = text_field_tag :search, params[:search], :id => 'search_field' 
-        = submit_tag "Search", :name => nil, :class => "btn"
+        .input-prepend
+          %span.add-on
+            %i.icon-search
+          = text_field_tag :search, params[:search], :id => 'search_field' 
 
         .rooms-table
           =render :partial => "rooms/table", :locals => {:rooms => @rooms, :sort => nil, :order => nil, :page => nil, :projector => false, :whiteboard => false}

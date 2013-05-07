@@ -1,25 +1,3 @@
-%ul.inline.rooms-options
-  -if params[:projector_available] == "true"
-    %li
-      = link_to params.merge(:projector_available => false, :sort => params[:sort]) do 
-        = succeed "Show only rooms with Projectors" do
-          %i.icon-check
-  -else
-    %li
-      = link_to params.merge(:projector_available => true, :sort => params[:sort]) do 
-        = succeed "Show only rooms with projectors" do
-          %i.icon-check-empty
-  -if params[:whiteboard_available] == "true"
-    %li
-      = link_to params.merge(:whiteboard_available => false) do 
-        = succeed "Show only rooms with whiteboards" do
-          %i.icon-check
-  -else
-    %li
-      = link_to params.merge(:whiteboard_available => true) do 
-        = succeed "Show only rooms with whiteboards" do
-          %i.icon-check-empty
-
 = hidden_field_tag :order, order
 = hidden_field_tag :sort, sort
 = hidden_field_tag :projector_available, projector
@@ -46,4 +24,22 @@
         %td=each.name
         %td=each.description
         %td.occupied-text Available
+
+%ul.inline.rooms-options
+  -if params[:projector_available] == "true"
+    %li
+      %i.icon-check
+      = link_to "Show only rooms with Projectors", params.merge(:projector_available => false, :sort => params[:sort])
+  -else
+    %li
+      %i.icon-check-empty
+      = link_to "Show only rooms with projectors", params.merge(:projector_available => true, :sort => params[:sort])
+  -if params[:whiteboard_available] == "true"
+    %li
+      %i.icon-check
+      = link_to "Show only rooms with whiteboards", params.merge(:whiteboard_available => false)
+  -else
+    %li
+      %i.icon-check-empty
+      = link_to "Show only rooms with whiteboards", params.merge(:whiteboard_available => true)
 
