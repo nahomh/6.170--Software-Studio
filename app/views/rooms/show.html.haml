@@ -1,40 +1,29 @@
-%h3= @room.name
+%h4= @room.name
 
-%ul.thumbnails
-  %li.span4
-    %a.thumbnail
-      
-= current_user.room
-= @room.latitude
-= @room.longitude
-= @distance
+.action.btn-large
+  -if current_user.room == @room
+    =link_to " Check room in", room_checkout_path(@room), :class => 'btn-large btn-danger icon-pencil checkout'#, :method => "PUT"
+  -else
+    =link_to "Check out room", room_checkout_path(@room), :class => "btn-large btn-success icon-pencil checkout"#, :method => "PUT
+    
+
 
 .occupants
   -if @room.occupied
-    Currently in use by:
-    %ul.thumbnails
+    %h5 Currently in use by:
+    .row
       -@room.users.each do |user|
-        .li.span2
-          .thumbnail
-            .caption
-              - if current_user == user
-                .user
-                  .icon-group.green-icon.pull-left
-                  You
-              - else
-                .user
-                  .icon-group.green-icon
-                  = user.name
-
-.actions
-  -if current_user.room == @room
-    =link_to " Check room in", room_checkout_path(@room), :class => 'btn btn-danger icon-pencil checkout'#, :method => "PUT"
-  -else
-    =link_to "Check out room", room_checkout_path(@room), :class => "btn btn-success icon-pencil checkout"#, :method => "PUT
+        .user.btn-large.span2
+          - if current_user == user
+            .icon-group.green-icon.pull-left
+            You
+          - else
+            .icon-group.green-icon
+            = user.name
 
 
-%p Your Coordinates:
-%p#demo Click the button to get your coordinates:
+
+
 
 
 
