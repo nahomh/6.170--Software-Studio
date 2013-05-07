@@ -28,7 +28,7 @@
 
         .rooms-table
           =render :partial => "rooms/table", :locals => {:rooms => @rooms, :sort => nil, :order => nil, :page => nil, :projector => false, :whiteboard => false}
-          =will_paginate @rooms
+       
     .map_container
       .gmaps4rails_map#map
         .span9#map_canvas

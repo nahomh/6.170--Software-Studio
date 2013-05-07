@@ -9,7 +9,7 @@ class HomeController < ApplicationController
     elsif params[:projector_available] == 'true'
       @rooms = Room.search(params[:search]).where(:projector_available => true).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     else
-      @rooms = Room.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+      @rooms = Room.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 1, :page => params[:page])
     end
     if current_user
       @graph = graph

@@ -26,6 +26,7 @@
         %td.occupied-text Available
 
 %ul.inline.rooms-options
+  %li.pagination= will_paginate @rooms
   -if params[:projector_available] == "true"
     %li
       %i.icon-check
@@ -42,4 +43,3 @@
     %li
       %i.icon-check-empty
       = link_to "Show only rooms with whiteboards", params.merge(:whiteboard_available => true)
-
