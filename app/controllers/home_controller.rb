@@ -1,7 +1,16 @@
 class HomeController < ApplicationController
   helper_method :sort_column, :sort_direction
   def index
-  	@rooms = Room.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    Room.return_busy
+    if params[:whiteboard_available] == 'true' && params[:projector_available] == 'true'
+      @rooms = Room.search(params[:search]).where(:projector_available => true, :whiteboard_available => true).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    elsif params[:whiteboard_available] == 'true'
+      @rooms = Room.search(params[:search]).where(:whiteboard_available => true).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    elsif params[:projector_available] == 'true'
+      @rooms = Room.search(params[:search]).where(:projector_available => true).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    else
+      @rooms = Room.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    end
     if current_user
       @graph = graph
     end
@@ -27,7 +36,7 @@ class HomeController < ApplicationController
    	  print @friends
     end
     respond_to do |format|
-      format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms, :sort => sort_column, :order => sort_direction, :page => params[:page] } }
+      format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms, :sort => sort_column, :order => sort_direction, :page => params[:page], :whiteboard => params[:whiteboard_available], :projector => params[:projector_available] } }
       format.html
     end
   end

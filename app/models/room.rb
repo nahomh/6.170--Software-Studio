@@ -1,6 +1,6 @@
 class Room < ActiveRecord::Base
   acts_as_gmappable :process_geocoding => false
-  attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name
+  attr_accessible :description, :latitude, :longitude, :occupied, :room_number, :user_id, :name, :projector_available, :whiteboard_available
   has_many :users
 
   def checkout
@@ -8,6 +8,16 @@ class Room < ActiveRecord::Base
       return false
     else
       return update_attributes(:occupied => true)
+    end
+  end
+
+  def self.return_busy
+    rooms = where(:occupied => true).where("updated_at < ?", 2.hours.ago)
+    rooms.each do |room|
+      room.users.each do |user|
+        user.checkin
+      end
+      room.checkin
     end
   end
 

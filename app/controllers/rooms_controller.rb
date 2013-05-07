@@ -21,18 +21,19 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:room_id])
     respond_to do |format|
       if @room.users.include?(current_user) 
-        
-          current_user.checkin
-          if @room.users.size == 0
-            @room.checkin
-          end
-          format.html { redirect_to @room, :notice => "Successfully checked room back in" }
-          format.js {}
-
-        
+        current_user.checkin
+        if @room.users.size == 0
+          @room.checkin
+        end
+        format.html { redirect_to @room, :notice => "Successfully checked room back in" }
+        format.js {}
       else
-        if  current_user.close_to_room(@room) < 1.0
+        if current_user.close_to_room(@room) < 1.0
+          old_room = current_user.room
           current_user.checkout(@room.id)
+          if old_room && old_room.users.size == 0
+            old_room.checkin
+          end
           if !@room.occupied
             @room.checkout
           end
@@ -42,10 +43,6 @@ class RoomsController < ApplicationController
           format.html { redirect_to @room, :flash => {:error => "You are not close enough to the room"} }
           format.js {}
         end
-        #else
-        #  format.html { redirect_to @room, :flash => {:error => "You have already checked out this room." }}
-        #  format.js {}
-        #end
       end
     end
   end

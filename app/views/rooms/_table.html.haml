@@ -1,5 +1,29 @@
+%ul.inline.rooms-options
+  -if params[:projector_available] == "true"
+    %li
+      = link_to params.merge(:projector_available => false, :sort => params[:sort]) do 
+        = succeed "Show only rooms with Projectors" do
+          %i.icon-check
+  -else
+    %li
+      = link_to params.merge(:projector_available => true, :sort => params[:sort]) do 
+        = succeed "Show only rooms with projectors" do
+          %i.icon-check-empty
+  -if params[:whiteboard_available] == "true"
+    %li
+      = link_to params.merge(:whiteboard_available => false) do 
+        = succeed "Show only rooms with whiteboards" do
+          %i.icon-check
+  -else
+    %li
+      = link_to params.merge(:whiteboard_available => true) do 
+        = succeed "Show only rooms with whiteboards" do
+          %i.icon-check-empty
+
 = hidden_field_tag :order, order
 = hidden_field_tag :sort, sort
+= hidden_field_tag :projector_available, projector
+= hidden_field_tag :whiteboard_available, whiteboard
 -if page
   = hidden_field_tag :page, page
 %table.table.table-hover

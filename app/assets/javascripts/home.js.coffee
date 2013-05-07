@@ -5,13 +5,11 @@
 $ ->
   setInterval refresh_rooms, 5000
   $(".occupied-color").click relocation_handler
-  $(".rooms-table th a, .rooms-table .pagination a").click sort_handler
+  $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
   $(".rooms-search").submit search_handler
 
 search_handler = (event) ->
   old_table_parent = $(".rooms-table")
-  old_table = old_table_parent.find("table")
-  console.log(JSON.stringify($(this).serialize()))
   $.ajax
     url: $(this).attr("action")
     data: $(this).serialize()
@@ -23,12 +21,11 @@ search_handler = (event) ->
       old_table_parent.children().remove()
       old_table_parent.append(new_table)
       $(".occupied-color").click relocation_handler
-      $(".rooms-table th a").click sort_handler
+      $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
   return false
 
 sort_handler = (event) ->
   old_table_parent = $(".rooms-table")
-  old_table = old_table_parent.find("table")
   $.ajax
     url: $(this).attr('href')
     data: null
@@ -36,10 +33,10 @@ sort_handler = (event) ->
     method: "GET"
     complete: (data) ->
       new_table = $(data.responseText)
-      old_table.remove()
+      old_table_parent.children().remove()
       old_table_parent.append(new_table)
       $(".occupied-color").click relocation_handler
-      $(".rooms-table th a").click sort_handler
+      $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
   return false
      
 
