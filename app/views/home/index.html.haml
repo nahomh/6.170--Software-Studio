@@ -1,19 +1,8 @@
 .row-fluid
   .span3
-    -if current_user && @friends.size > 0
-      .friends.well
-        -@friends.each do |friend|
-          .media.friend{:id => friend.id}
-
-            = link_to image_tag(@graph.get_picture(friend.uid), :class => "img-rounded media-object pull-left") ,friend, :class => "pull-left"
-            .media-body
-              %h5.media-heading=friend.name
-              .occupying
-                -if friend.room
-                  %address is studying in #{friend.room.name}
-                -else 
-                  %address isn't studying right now.
-      
+    .friends-list-sidebar
+      = render :partial => "users/friends", :locals => {:friends => @friends}
+     
   .span9
     .room-search
       =form_tag root_path, :method => "get", :class => "rooms-search" do
