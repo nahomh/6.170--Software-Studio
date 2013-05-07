@@ -1,22 +1,34 @@
 $ ->
-  getlocation()
-  $(".map_container").ready
+  
+  $(".map_container").ready getlocation
   
  
           
 getlocation = (event) ->
   console.log(navigator.geolocation)
   if navigator.geolocation
-      navigator.geolocation.getCurrentPosition(showPosition, errorPosition, {timeout:10000})
+      navigator.geolocation.getCurrentPosition(showPosition,errorPosition, {timeout:3000})
   
   console.log('talkjfafs')
 
 errorPosition = (position) =>
+  user = $(".user")
   console.log("could not capture date")
+  $("#demo").append("latitude:"+"nil"+'<br>'+
+    "longitude:"+"nil")
+  $.ajax
+    url: user[0]+'/set_location'
+    data: {latitude: null, longitude: null}
+    dataType: "script"
+    type: "PUT"
+    complete: (data) ->
+      new_room = $("<div></div>")
+      new_room.append(data.responseText)
 
   
 
 showPosition = (position) ->
+
   console.log(position)
   user = $(".user")
   console.log(position.coords.latitude)

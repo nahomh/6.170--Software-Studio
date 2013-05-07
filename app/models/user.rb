@@ -51,18 +51,24 @@ class User < ActiveRecord::Base
 
   end
   #haversine formula to calculate distance between two coordinates
+  #if the user does not have a location (in the case of browswer issues), 
+  #we give the user the benefit of the doubt and allows them to checkin anywhere
   def close_to_room(room)
-    d=50000
-    if self.latitude && self.longitude
-      r = 6371
-      rad = Math::PI/180
-      dLat = (self.latitude - room.latitude)*rad
-      dLong = (self.longitude - room.longitude)*rad
-      lat1 = self.latitude*rad
-      lat2 = room.latitude*rad
-      a = Math.sin(dLat/2)*Math.sin(dLat/2)+ Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLong/2)*Math.sin(dLong/2)
-      c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-      d = r * c 
+    if self.latitude == nil && self.longitude == nil
+      d = 0
+    else
+      d=50000
+      if self.latitude && self.longitude
+        r = 6371
+        rad = Math::PI/180
+        dLat = (self.latitude - room.latitude)*rad
+        dLong = (self.longitude - room.longitude)*rad
+        lat1 = self.latitude*rad
+        lat2 = room.latitude*rad
+        a = Math.sin(dLat/2)*Math.sin(dLat/2)+ Math.cos(lat1)*Math.cos(lat2)*Math.sin(dLong/2)*Math.sin(dLong/2)
+        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+        d = r * c 
+      end
     end
     return d
   end  

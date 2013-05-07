@@ -11,7 +11,9 @@ span.available {
 tr.occupied-color{
   cursor:pointer;
 }
-
+.icon-user{
+  padding-top:4px;
+}
 thead.sortable {
   i {
     display: none;
@@ -31,6 +33,9 @@ thead.sortable {
       text-decoration: none;
     }
   }
+}
+.green-icon{
+  color: green;
 }
 address{
 	margin: 0px;

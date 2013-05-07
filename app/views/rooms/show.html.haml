@@ -1,4 +1,9 @@
 %h3= @room.name
+
+%ul.thumbnails
+  %li.span4
+    %a.thumbnail
+      
 = current_user.room
 = @room.latitude
 = @room.longitude
@@ -7,21 +12,25 @@
 .occupants
   -if @room.occupied
     Currently in use by:
-
-    -@room.users.each do |user|
-      - if current_user == user
-        .user
-          You
-      - else
-        .user
-          =user.name
-          =user.email
+    %ul.thumbnails
+      -@room.users.each do |user|
+        .li.span2
+          .thumbnail
+            .caption
+              - if current_user == user
+                .user
+                  .icon-group.green-icon.pull-left
+                  You
+              - else
+                .user
+                  .icon-group.green-icon
+                  = user.name
 
 .actions
   -if current_user.room == @room
-    =link_to "Check room in", room_checkout_path(@room), :class => 'checkout'#, :method => "PUT"
+    =link_to " Check room in", room_checkout_path(@room), :class => 'btn btn-danger icon-pencil checkout'#, :method => "PUT"
   -else
-    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
+    =link_to "Check out room", room_checkout_path(@room), :class => "btn btn-success icon-pencil checkout"#, :method => "PUT
 
 
 %p Your Coordinates:
