@@ -4,19 +4,16 @@
       .friends.well
         -@friends.each do |friend|
           .media.friend{:id => friend.id}
-
-            = link_to image_tag(@graph.get_picture(friend.uid), :class => "img-rounded media-object pull-left") ,friend, :class => "pull-left"
+            = image_tag @graph.get_picture(friend.uid), :class => "img-rounded media-object pull-left"
             .media-body
               -if friend.room
                 %icon.icon-user.pull-right.green-icon
               -else
                 %icon.icon-user.pull-right
               %h5.media-heading=friend.name
-              
-
               .occupying
                 -if friend.room
-                  %address Studying in #{friend.room.name}
+                  %address Studying in #{friend.room.room_number}
                 -else 
                   %i Offline
       

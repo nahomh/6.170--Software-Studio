@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
 
   def friends(graph)
     friends = User.where(:id => friend_ids(graph))
-
   end
   #haversine formula to calculate distance between two coordinates
   #if the user does not have a location (in the case of browswer issues), 
