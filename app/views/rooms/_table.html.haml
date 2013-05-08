@@ -26,7 +26,7 @@
         %td.occupied-text Available
 
 %ul.inline.rooms-options
-  %li.pagination= will_paginate @rooms
+  %li= will_paginate @rooms
   -if params[:projector_available] == "true"
     %li
       %i.icon-check
