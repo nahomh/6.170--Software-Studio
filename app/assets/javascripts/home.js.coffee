@@ -51,7 +51,7 @@ sort_handler = (event) ->
       old_table_parent.append(new_table)
       $(".occupied-color").click relocation_handler
       $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
-      #map_handler()
+      map_handler()
   return false
      
 
@@ -79,7 +79,7 @@ refresh_rooms = (event) ->
           room.removeClass("error success")
           room.addClass("success")
           change_text.html("Available")
-  #map_handler()
+  map_handler()
   refresh_friends()
 
 map_handler = (event) ->
