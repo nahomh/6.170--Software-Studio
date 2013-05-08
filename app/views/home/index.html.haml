@@ -2,7 +2,6 @@
   .span3
     .friends-list-sidebar
       = render :partial => "users/friends", :locals => {:friends => @friends}
-     
   .span9
     .room-search
       =form_tag root_path, :method => "get", :class => "rooms-search" do
@@ -13,10 +12,7 @@
           = text_field_tag :search, params[:search], :id => 'search_field' 
 
         .rooms-table
-          =render :partial => "rooms/table", :locals => {:rooms => @rooms, :sort => nil, :order => nil, :page => nil, :projector => false, :whiteboard => false}
-    =will_paginate @rooms
-    %br
-    .map_container
-      .gmaps4rails_map#map
-        .span9#map_canvas
-          .hidden-phone=gmaps("map_options" => { "detect_location" => true, "bounds" =>'[{"lat":42.36311,"lng":-71.110425},{"lat":42.350711,"lng":-71.076908}]'},"markers" => { "data" => @json })
+          =render :partial => "rooms/table", :locals => {:rooms => @rooms, :sort => nil, :order => nil, :page => nil, :projector => false, :whiteboard => false, :map_info => @map_info}
+
+    .map-parent
+      =render :partial => "map", :locals => {:map_info => @map_info}

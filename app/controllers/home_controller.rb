@@ -14,7 +14,7 @@ class HomeController < ApplicationController
     if current_user
       @graph = graph
     end
-    @json = @rooms.to_gmaps4rails do |room, marker|
+    @map_info = @rooms.to_gmaps4rails do |room, marker|
       if room.occupied?
       marker.picture({
         :picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=O|FF0000|000000", # up to you to pass the proper parameters in the url, I guess with a method from device
@@ -32,10 +32,10 @@ class HomeController < ApplicationController
     @friends = []
 
     if current_user
-      @friends = current_user.friends(graph).order("room_id DESC ")
-   	  print @friends
+      @friends = current_user.friends(graph).order("room_id ASC ")
     end
     respond_to do |format|
+      format.json { render :json => @map_info }
       format.js { render :partial => "rooms/table", :locals => { :rooms => @rooms, :sort => sort_column, :order => sort_direction, :page => params[:page], :whiteboard => params[:whiteboard_available], :projector => params[:projector_available] } }
       format.html
     end

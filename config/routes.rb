@@ -1,5 +1,7 @@
 Activate::Application.routes.draw do
   get "users/show"
+  get "home/map"
+  get "users/friends"
 
   resources "users" do
     put "set_location"

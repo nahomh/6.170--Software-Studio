@@ -7,7 +7,7 @@
     = csrf_meta_tags
     = yield :scripts
     %meta{:name => 'viewport', :content => 'width=device-width, initial-scale=1.0'}
-  %body  
+  %body
     .container
       .navbar
         .navbar-inner
@@ -28,3 +28,5 @@
         .alert.alert-error
           =flash[:error]
       = yield
+
+

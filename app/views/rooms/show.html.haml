@@ -1,31 +1,33 @@
-%h3= @room.name
-= current_user.room
-= @room.latitude
-= @room.longitude
-= @distance
+%h4= @room.name
+%h5= @room.room_number
+- if @room.projector_available
+  %h6= Whiteboard Avaialble
+
+.action.btn-large
+  -if current_user.room == @room
+    =link_to " Check room in", room_checkout_path(@room), :class => 'btn-large btn-danger icon-pencil checkout'#, :method => "PUT"
+  -else
+    =link_to "Check out room", room_checkout_path(@room), :class => "btn-large btn-success icon-pencil checkout"#, :method => "PUT
+    
+
 
 .occupants
   -if @room.occupied
-    Currently in use by:
-
-    -@room.users.each do |user|
-      - if current_user == user
-        .user
-          You
-      - else
-        .user
-          =user.name
-          =user.email
-
-.actions
-  -if current_user.room == @room
-    =link_to "Check room in", room_checkout_path(@room), :class => 'checkout'#, :method => "PUT"
-  -else
-    =link_to "Check out room", room_checkout_path(@room), :class => "checkout"#, :method => "PUT
+    %h5 Currently in use by:
+    .row
+      -@room.users.each do |user|
+        .user.btn-large.span2
+          - if current_user == user
+            .icon-group.green-icon.pull-left
+            You
+          - else
+            .icon-group.green-icon.pull-left= user.name
+            %br
+            %h6.i= user.email
 
 
-%p Your Coordinates:
-%p#demo Click the button to get your coordinates:
+
+
 
 
 

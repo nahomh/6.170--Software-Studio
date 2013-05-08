@@ -4,7 +4,6 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, FACEBOOK_CONFIG['app_id'], FACEBOOK_CONFIG['secret']
 end
 
-
 #Enabling mock data for unit tests
 if Rails.env.test?
   OmniAuth.config.test_mode = true
