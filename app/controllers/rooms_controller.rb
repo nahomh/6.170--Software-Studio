@@ -28,7 +28,7 @@ class RoomsController < ApplicationController
         format.html { redirect_to @room, :notice => "Successfully checked room back in" }
         format.js {}
       else
-        if current_user.close_to_room(@room) <.5
+        if current_user.close_to_room(@room) <0.2
           old_room = current_user.room
           current_user.checkout(@room.id)
           if old_room && old_room.users.size == 0
