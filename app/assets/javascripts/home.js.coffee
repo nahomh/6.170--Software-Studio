@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
-  setInterval refresh_rooms, 5000
+  setInterval refresh_rooms, 15000
   $(".occupied-color").click relocation_handler
   $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
   $(".rooms-search").submit search_handler
@@ -51,7 +51,7 @@ sort_handler = (event) ->
       old_table_parent.append(new_table)
       $(".occupied-color").click relocation_handler
       $(".rooms-table th a, .rooms-table .pagination a, .rooms-table .rooms-options a").click sort_handler
-      map_handler()
+      #map_handler()
   return false
      
 
@@ -79,7 +79,7 @@ refresh_rooms = (event) ->
           room.removeClass("error success")
           room.addClass("success")
           change_text.html("Available")
-  map_handler()
+  #map_handler()
   refresh_friends()
 
 map_handler = (event) ->
