@@ -1,7 +1,6 @@
 %h4= @room.name
 %h5= @room.room_number
-- if @room.projector_available
-  %h6= Whiteboard Avaialble
+
 
 .action.btn-large
   -if current_user.room == @room
