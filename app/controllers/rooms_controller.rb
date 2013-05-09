@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_filter :require_login, :only => [:show]
+ #stores a room object and passes it into the show view.
   def show
     @room = Room.find(params[:id])
     respond_to do |format|
@@ -8,7 +9,7 @@ class RoomsController < ApplicationController
       format.js {}
     end
   end
-
+  #Updates the user's location and sets the new latitude and longitude coordinates.
   def new_location
     current_user.update_location(params[:longitude], params[:latitude])
     @room = Room.first
@@ -16,7 +17,9 @@ class RoomsController < ApplicationController
       format.js {render :nothing => true }
     end
   end
-
+  #Checks out a room if it's not occupied.
+  #Security check to see the number of people in the room.
+  #Security check to see if the user is close enough to the room in order to check the room out. 
   def checkout
     @room = Room.find(params[:room_id])
     respond_to do |format|
@@ -46,7 +49,7 @@ class RoomsController < ApplicationController
       end
     end
   end
-  
+  #Refreshes the room information to show the update status of a room. 
   def refresh
     @room = Room.find(params[:room_id])
     respond_to do |format|
