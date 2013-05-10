@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  description: MyString
+  description: our test one
   occupied: false
   latitude: 1.5
-  longitude: 1.5
-  student_id: 
-  room_number: MyString
+  longitude: 1.5 
+  room_number: 100
 
 two:
   description: MyString
   occupied: false
   latitude: 1.5
   longitude: 1.5
-  student_id: 
   room_number: MyString

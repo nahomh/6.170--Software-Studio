@@ -1,22 +1,20 @@
 Agenda May 10, 2013:
 
-1). Discuss check-in issues
-	- Gps based checkout: difficult and inconsistant
-	- Allow users to check-in based on gps
-	- set time checkins (1 hr interval)
-2). Ask about GeoLocation problems
-	- Information on timeout issues
-3). Discuss Logistical issues with the UA
-	- How to best approach competing projects
-	- Implement with the help of student organization or not
-4). Explanation of final presentation
-	- When is final code implemented
-	- Criteria for presentation
+1). Discussion/ Report of Safety Features:
+	- GPS Checking
+	- Maximum Login Time
+	- Only one room checkout at a time
+	- Facebook login
+2). Performance issues
+	- a lot of ajax 
+	- too much reloading
+3). Testing
+	- Suggestions for testing with facebook login or without user sessions
+	- How complicated should our tests reach
+4). Remaining Documents
+	- Requirements compared to previous projects
 
 Meeting Minutes May 10, 2013
 
-- We disucssed some ideas of hybrid approaches to incorporate multiple check-in quality checks to encourage correct use of MITspaces. We discussed how this issue may be a significant issue upon implementation, and how we will need to address it in future iterations. As of right now we will implement a working solution, and assume users will utlize the service correctly. User testing may also help in our search for a robust and efficient solution. 
-- Geolocation problem was not identified, but we discussed some approaches by using timeouts to improve the browser's ability to gather locations
-- In terms of implemention, we are in contact with the UA and discussed some approaches to also get in contact with MIT Facilities to coordinate an approach. 
-- Timeline for the code: we will to have majority of the functionality for the code completed by Wednesday, with an additional couple of days to clean up the css and other small modifications. 
+-
 
