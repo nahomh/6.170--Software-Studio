@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   helper_method :sort_column, :sort_direction
- #Loads the home page, checking the various parameters for each room.
+ #Requires: None
+ #Loads the home page, and renders the status of different rooms.
   def index
     Room.return_busy
     if params[:whiteboard_available] == 'true' && params[:projector_available] == 'true'
@@ -18,13 +19,13 @@ class HomeController < ApplicationController
     @map_info = @rooms.to_gmaps4rails do |room, marker|
       if room.occupied?
         marker.picture({
-          :picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=U|FF0000|000000", # up to you to pass the proper parameters in the url, I guess with a method from device
+          :picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=U|FF0000|000000", 
           :width   => 32,
           :height  => 32
         })
       else
         marker.picture({
-          :picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|32cd32|000000", # up to you to pass the proper parameters in the url, I guess with a method from device
+          :picture => "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=A|32cd32|000000",
           :width   => 32,
           :height  => 32
         })
@@ -41,10 +42,12 @@ class HomeController < ApplicationController
       format.html
     end
   end
+  #Requires:None
   #sorts the columns of the rooms table.
   def sort_column
     Room.column_names.include?(params[:sort]) ?  params[:sort] : "room_number"
   end
+  #Reuires:None
   #sorts the direction of the rooms table. 
   def sort_direction
     %w[asc desc].include?(params[:order]) ?  params[:order] : "asc"
