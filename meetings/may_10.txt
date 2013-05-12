@@ -16,5 +16,7 @@ Agenda May 10, 2013:
 
 Meeting Minutes May 10, 2013
 
--
+- The TAs supported our decisions on safety features and helped with some performance issues with heorku
+- Cleared up the requirements for testing. We only needed to write functional and unit tests for the application
+- Discussed some feedback for the entire course: what we liked,  and what could be improved upon
 
