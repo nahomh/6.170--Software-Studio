@@ -16,4 +16,5 @@ class UsersControllerTest < ActionController::TestCase
     assert_equal User.find(@myuser.id).longitude, 25
     assert_equal User.find(@myuser.id).latitude, 30
   end
+
 end
