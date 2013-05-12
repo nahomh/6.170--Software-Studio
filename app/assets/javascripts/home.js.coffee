@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+
 $ ->
   setInterval refresh_rooms, 15000
   $(".occupied-color").click relocation_handler
@@ -54,7 +55,8 @@ sort_handler = (event) ->
       map_handler()
   return false
      
-
+#Requires:None
+#Ajax call to update the status of each room in the rooms table, changing the respective row of each room to reflect the status of the specfic room.
 relocation_handler = (event) ->
   room = $(this)
   document.location.href="/rooms/"+room[0]['id']
@@ -62,13 +64,13 @@ relocation_handler = (event) ->
 refresh_rooms = (event) ->
   rooms = $(".occupied-color")
   rooms.each ->
-    room = $(this)
-    $.ajax
+    room = $(this) #selects the row of each room, requiring the id of that row to be the id of the room. 
+    $.ajax #Call to the controller refresh method with a given room id.
       url: "/rooms/"+room[0]['id']+"/refresh"
       data: null
       dataType: "json"
       type: "GET"
-      complete: (data) ->
+      complete: (data) -> #After call is completed re-render by changing or keeping the current class associated with the row in the table to reflect the status of the current room.
         new_room = JSON.parse(data.responseText)
         change_text = room.find(".occupied-text")
         if new_room.occupied
@@ -82,6 +84,8 @@ refresh_rooms = (event) ->
   map_handler()
   refresh_friends()
 
+#Requires:None
+#Ajax call to update the status of each room in the map, and changes the respective status of each to reflect their current status.
 map_handler = (event) ->
   $.ajax
     url: $("#map-refresh").attr('href')
