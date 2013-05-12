@@ -3,6 +3,8 @@ $ ->
   $(".map_container").ready getlocation
   
  
+#Requires:None
+#Gets the current location of the user.
           
 getlocation = (event) ->
   console.log(navigator.geolocation)
@@ -11,6 +13,8 @@ getlocation = (event) ->
   
   console.log('talkjfafs')
 
+#Requires:None
+#Handling case when user location data can't be captured.
 errorPosition = (position) =>
   user = $(".user")
   console.log("could not capture date")
@@ -25,8 +29,9 @@ errorPosition = (position) =>
       new_room = $("<div></div>")
       new_room.append(data.responseText)
 
-  
 
+#Requires: None
+#Ajax call to set user's location.
 showPosition = (position) ->
 
   console.log(position)
@@ -35,7 +40,7 @@ showPosition = (position) ->
   console.log(position.coords.longitude)
   $("#demo").append("latitude:"+position.coords.latitude+'<br>'+
     "longitude:"+position.coords.longitude)
-  $.ajax
+  $.ajax #Calls the set_location method in the controller with a specific user id.
     url: user[0]+'/set_location'
     data: {latitude: position.coords.latitude, longitude: position.coords.longitude}
     dataType: "script"
